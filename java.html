@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Programming Tutorial - Zero to Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .khmer-font {
+            font-family: 'Khmer OS', 'Noto Sans Khmer', sans-serif;
+        }
+        .code-block {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .section-card {
+            transition: all 0.3s ease;
+            border-radius: 16px;
+        }
+        .section-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-button.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl font-bold mb-4">Java Programming Tutorial</h1>
+            <h2 class="text-2xl khmer-font mb-4">មគ្គុទ្ទេសក៍ការសរសេរកម្មវិធី Java</h2>
+            <p class="text-xl opacity-90 mb-8">From Zero to Hero - ពីសូន្យ ដល់ជំនាញខ្ពស់</p>
+            <div class="bg-white bg-opacity-20 rounded-lg p-4 inline-block">
+                <p class="text-lg">Complete Interactive Tutorial with Examples</p>
+                <p class="khmer-font">ការបង្រៀនពេញលេញជាមួយឧទាហរណ៍</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                <span>Tutorial Progress</span>
+                <span id="progress-text">0% Complete</span>
+            </div>
+            <div class="bg-gray-200 rounded-full h-2">
+                <div id="progress-bar" class="progress-bar w-0"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex flex-wrap gap-2 justify-center">
+                <button onclick="showSection('intro')" class="tab-button px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+                    Introduction
+                </button>
+                <button onclick="showSection('setup')" class="tab-button px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+                    Setup
+                </button>
+                <button onclick="showSection('basics')" class="tab-button px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+                    Basics
+                </button>
+                <button onclick="showSection('variables')" class="tab-button px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+                    Variables
+                </button>
+                <button onclick="showSection('operators')" class="tab-button px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+                    Operators
+                </button>
+                <button onclick="showSection('control')" class="tab-button px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+                    Control Flow
+                </button>
+                <button onclick="showSection('arrays')" class="tab-button px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+                    Arrays
+                </button>
+                <button onclick="showSection('oop')" class="tab-button px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+                    OOP
+                </button>
+                <button onclick="showSection('inheritance')" class="tab-button px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+                    Inheritance
+                </button>
+                <button onclick="showSection('advanced')" class="tab-button px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+                    Advanced
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        
+        <!-- Introduction Section -->
+        <div id="intro" class="tab-content active">
+            <div class="section-card bg-white p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Introduction to Java</h2>
+                <h3 class="text-2xl khmer-font text-gray-700 mb-6">ការណែនាំអំពី Java</h3>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4 text-blue-600">What is Java?</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Platform Independent (ឯករាជ្យពីប្រព័ន្ធប្រតិបត្តិការ)</li>
+                            <li>• Object-Oriented (កម្រងវត្ថុ)</li>
+                            <li>• Secure (សុវត្ថិភាព)</li>
+                            <li>• Robust (រឹងមាំ)</li>
+                            <li>• Multithreaded (ពហុខ្សែស្រឡាយ)</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4 text-green-600">Key Terms / ពាក្យគន្លឹះ</h4>
+                        <div class="space-y-3">
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                                <strong>JVM</strong> - Java Virtual Machine<br>
+                                <span class="khmer-font text-sm text-gray-600">ម៉ាស៊ីនជាប់លេខ Java</span>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                                <strong>JDK</strong> - Java Development Kit<br>
+                                <span class="khmer-font text-sm text-gray-600">ឧបករណ៍អភិវឌ្ឍន៍ Java</span>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded-lg">
+                                <strong>JRE</strong> - Java Runtime Environment<br>
+                                <span class="khmer-font text-sm text-gray-600">បរិយាកាសដំណើរការ Java</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="markComplete('intro')" class="mt-6 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                    Mark as Complete ✓
+                </button>
+            </div>
+        </div>
+
+        <!-- Setup Section -->
+        <div id="setup" class="tab-content">
+            <div class="section-card bg-white p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Setting Up Java Environment</h2>
+                <h3 class="text-2xl khmer-font text-gray-700 mb-6">ការដំឡើងបរិយាកាស Java</h3>
+                
+                <div class="space-y-6">
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+                        <h4 class="text-lg font-semibold mb-3">Installation Steps / ជំហានដំឡើង:</h4>
+                        <ol class="list-decimal list-inside space-y-2">
+                            <li>Download JDK from Oracle website</li>
+                            <li>Install JDK on your system</li>
+                            <li>Set up PATH environment variable</li>
+                            <li>Verify installation with <code class="bg-gray-200 px-2 py-1 rounded">java -version</code></li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
+                        <h4 class="text-lg font-semibold mb-3">IDEs / កម្មវិធីសរសេរកូដ:</h4>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="text-center p-4 bg-white rounded-lg shadow">
+                                <h5 class="font-semibold">IntelliJ IDEA</h5>
+                                <p class="text-sm text-gray-600">Professional IDE</p>
+                            </div>
+                            <div class="text-center p-4 bg-white rounded-lg shadow">
+                                <h5 class="font-semibold">Eclipse</h5>
+                                <p class="text-sm text-gray-600">Free & Open Source</p>
+                            </div>
+                            <div class="text-center p-4 bg-white rounded-lg shadow">
+                                <h5 class="font-semibold">VS Code</h5>
+                                <p class="text-sm text-gray-600">Lightweight Editor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="markComplete('setup')" class="mt-6 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                    Mark as Complete ✓
+                </button>
+            </div>
+        </div>
+
+        <!-- Basic Syntax Section -->
+        <div id="basics" class="tab-content">
+            <div class="section-card bg-white p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Basic Syntax</h2>
+                <h3 class="text-2xl khmer-font text-gray-700 mb-6">វាក្យសម្ពន្ធមូលដ្ឋាន</h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-purple-600">First Java Program / កម្មវិធី Java ដំបូង</h4>
+                        <div class="code-block">
+                            <pre><code class="language-java">public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+        System.out.println("សួស្តី ពិភពលោក!");
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg">
+                        <h4 class="text-lg font-semibold mb-3">Code Explanation / ការពន្យល់កូដ:</h4>
+                        <ul class="space-y-2">
+                            <li><strong>public class HelloWorld</strong> - បង្កើតថ្នាក់ (class) មានឈ្មោះ HelloWorld</li>
+                            <li><strong>public static void main(String[] args)</strong> - មេថុដដំបូង (main method) ដែលកម្មវិធីចាប់ផ្តើម</li>
+                            <li><strong>System.out.println()</strong> - បង្ហាញតម្លៃលើអេក្រង់</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold mb-3">Expected Output / លទ្ធផលដែលរំពឹង:</h4>
+                        <div class="bg-black text-green-400 p-4 rounded font-mono">
+                            Hello, World!<br>
+                            សួស្តី ពិភពលោក!
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold mb-3">Key Terms / ពាក្យគន្លឹះ:</h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <strong>Class (ថ្នាក់)</strong> - គំរូសម្រាប់បង្កើតវត្ថុ
+                            </div>
+                            <div>
+                                <strong>Method (មេថុដ)</strong> - សកម្មភាពដែលថ្នាក់អាចធ្វើបាន
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="markComplete('basics')" class="mt-6 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                    Mark as Complete ✓
+                </button>
+            </div>
+        </div>
+
+        <!-- Variables Section -->
+        <div id="variables" class="tab-content">
+            <div class="section-card bg-white p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Variables and Data Types</h2>
+                <h3 class="text-2xl khmer-font text-gray-700 mb-6">អថេរ និងប្រភេទទិន្នន័យ</h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-indigo-600">Primitive Data Types / ប្រភេទទិន្នន័យមូលដ្ឋាន</h4>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h5 class="font-semibold text-green-600 mb-2">Integer Types / ប្រភេទចំនួនគត់</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li><strong>byte</strong> - 1 byte (-128 to 127)</li>
+                                    <li><strong>short</strong> - 2 bytes (-32,768 to 32,767)</li>
+                                    <li><strong>int</strong> - 4 bytes (default)</li>
+                                    <li><strong>long</strong> - 8 bytes (add L suffix)</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h5 class="font-semibold text-blue-600 mb-2">Other Types / ប្រភេទផ្សេង</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li><strong>float</strong> - 4 bytes (add f suffix)</li>
+                                    <li><strong>double</strong> - 8 bytes (default decimal)</li>
+                                    <li><strong>char</strong> - 2 bytes (Unicode)</li>
+                                    <li><strong>boolean</strong> - true/false</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-purple-600">Variable Declaration Example</h4>
+                        <div class="code-block">
+                            <pre><code class="language-java">public class DataTypes {
+    public static void main(String[] args) {
+        // Integer types / ប្រភេទចំនួនគត់
+        byte age = 25;
+        short year = 2024;
+        int population = 1000000;
+        long distance = 9876543210L;
+        
+        // Floating point types / ប្រភេទលេខទសភាគ
+        float price = 19.99f;
+        double salary = 50000.75;
+        
+        // Character and Boolean / តួអក្សរ និងអាត្មា
+        char grade = 'A';
+        boolean isActive = true;
+        
+        // String (not primitive) / អក្សរសង្ខេប
+        String name = "John";
+        String khmerName = "សុខា";
+        
+        // Display values / បង្ហាញតម្លៃ
+        System.out.println("Age: " + age);
+        System.out.println("Name: " + name);
+        System.out.println("Khmer Name: " + khmerName);
+        System.out.println("Salary: $" + salary);
+        System.out.println("Grade: " + grade);
+        System.out.println("Is Active: " + isActive);
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
+                        <h4 class="text-lg font-semibold mb-3">Variable Naming Rules / គោលការណ៍ដាក់ឈ្មោះអថេរ:</h4>
+                        <ul class="space-y-1">
+                            <li>• Must start with letter, $ or _ / ត្រូវចាប់ផ្តើមដោយអក្សរ $ ឬ _</li>
+                            <li>• Case sensitive / ប្រកាន់អក្សរធំតូច</li>
+                            <li>• Cannot use Java keywords / មិនអាចប្រើពាក្យគន្លឹះ Java</li>
+                            <li>• Use camelCase convention / ប្រើសំនៀងអូដ្ឋធ្មប់</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <button onclick="markComplete('variables')" class="mt-6 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                    Mark as Complete ✓
+                </button>
+            </div>
+        </div>
+
+        <!-- Operators Section -->
+        <div id="operators" class="tab-content">
+            <div class="section-card bg-white p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Operators</h2>
+                <h3 class="text-2xl khmer-font text-gray-700 mb-6">សញ្ញាប្រមាណវិធី</h3>
+                
+                <div class="space-y-6">
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-red-600 mb-2">Arithmetic / គណិត</h5>
+                            <ul class="text-sm space-y-1">
+                                <li><strong>+</strong> Addition (បូក)</li>
+                                <li><strong>-</strong> Subtraction (ដក)</li>
+                                <li><strong>*</strong> Multiplication (គុណ)</li>
+                                <li><strong>/</strong> Division (ចែក)</li>
+                                <li><strong>%</strong> Modulus (សំណល់)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-blue-600 mb-2">Comparison / ប្រៀបធៀប</h5>
+                            <ul class="text-sm space-y-1">
+                                <li><strong>==</strong> Equal to</li>
+                                <li><strong>!=</strong> Not equal</li>
+                                <li><strong>></strong> Greater than</li>
+                                <li><strong><</strong> Less than</li>
+                                <li><strong>>=</strong> Greater equal</li>
+                                <li><strong><=</strong> Less equal</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-green-600 mb-2">Logical / តក្កវិជ្ជា</h5>
+                            <ul class="text-sm space-y-1">
+                                <li><strong>&&</strong> AND</li>
+                                <li><strong>||</strong> OR</li>
+                                <li><strong>!</strong> NOT</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-orange-600">Operators Example</h4>
+                        <div class="code-block">
+                            <pre><code class="language-java">public class Operators {
+    public static void main(String[] args) {
+        int a = 20;
+        int b = 10;
+        
+        // Arithmetic operations / ប្រមាណវិធីគណិត
+        System.out.println("Addition (បូក): " + (a + b));
+        System.out.println("Subtraction (ដក): " + (a - b));
+        System.out.println("Multiplication (គុណ): " + (a * b));
+        System.out.println("Division (ចែក): " + (a / b));
+        System.out.println("Modulus (សំណល់): " + (a % b));
+        
+        // Comparison operations / ប្រមាណវិធីប្រៀបធៀប
+        System.out.println("a == b: " + (a == b));
+        System.out.println("a != b: " + (a != b));
+        System.out.println("a > b: " + (a > b));
+        System.out.println("a < b: " + (a < b));
+        
+        // Logical operations / ប្រមាណវិធីតក្កវិជ្ជា
+        boolean x = true;
+        boolean y = false;
+        System.out.println("x && y: " + (x && y));
+        System.out.println("x || y: " + (x || y));
+        System.out.println("!x: " + (!x));
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold mb-3">Interactive Calculator</h4>
+                        <div class="grid grid-cols-3 gap-4">
+                            <input type="number" id="num1" placeholder="Number 1" class="p-2 border rounded">
+                            <select id="operator" class="p-2 border rounded">
+                                <option value="+">+ (បូក)</option>
+                                <option value="-">- (ដក)</option>
+                                <option value="*">* (គុណ)</option>
+                                <option value="/">/ (ចែក)</option>
+                                <option value="%">% (សំណល់)</option>
+                            </select>
+                            <input type="number" id="num2" placeholder="Number 2" class="p-2 border rounded">
+                        </div>
+                        <button onclick="calculate()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                            Calculate
+                        </button>
+                        <div id="calc-result" class="mt-4 p-4 bg-white rounded border hidden">
+                            <strong>Result:</strong> <span id="result-value"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="markComplete('operators')" class="mt-6 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                    Mark as Complete ✓
+                </button>
+            </div>
+        </div>
+
+        <!-- Control Structures Section -->
+        <div id="control" class="tab-content">
+            <div class="section-card bg-white p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Control Structures</h2>
+                <h3 class="text-2xl khmer-font text-gray-700 mb-6">រចនាសម្ព័ន្ធបញ្ជា</h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-red-600">If-Else Statements</h4>
+                        <div class="code-block">
+                            <pre><code class="language-java">public class ControlStructures {
+    public static void main(String[] args) {
+        int score = 85;
+        
+        // If-else statement / សេចក្តីថ្លែង if-else
+        if (score >= 90) {
+            System.out.println("Grade: A (ពិន្ទុ: ល្អបំផុត)");
+        } else if (score >= 80) {
+            System.out.println("Grade: B (ពិន្ទុ: ល្អ)");
+        } else if (score >= 70) {
+            System.out.println("Grade: C (ពិន្ទុ: មធ្យម)");
+        } else {
+            System.out.println("Grade: F (ពិន្ទុ: ធ្លាក់)");
+        }
+        
+        // Switch statement / សេចក្តីថ្លែង switch
+        char grade = 'B';
+        switch (grade) {
+            case 'A':
+                System.out.println("Excellent! / ពិសេសណាស់!");
+                break;
+            case 'B':
+                System.out.println("Good job! / ធ្វើបានល្អ!");
+                break;
+            case 'C':
+                System.out.println("Average / មធ្យម");
+                break;
+            default:
+                System.out.println("Need improvement / ត្រូវការកែលម្អ");
+        }
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-blue-600">Loops / រង្វិលជុំ</h4>
+                        <div class="code-block">
+                            <pre><code class="language-java">// For loop / រង្វិលជុំ for
+System.out.println("Counting 1 to 5:");
+for (int i = 1; i <= 5; i++) {
+    System.out.println("Count: " + i);
+}
+
+// While loop / រង្វិលជុំ while
+System.out.println("Countdown:");
+int countdown = 3;
+while (countdown > 0) {
+    System.out.println(countdown);
+    countdown--;
+}
+System.out.println("Start! / ចាប់ផ្តើម!");
+
+// Do-while loop / រង្វិលជុំ do-while
+int number = 1;
+do {
+    System.out.println("Number: " + number);
+    number++;
+} while (number <= 3);</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-purple-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold mb-3">Interactive Grade Calculator</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Enter Score (0-100):</label>
+                                <input type="number" id="student-score" min="0" max="100" class="w-full p-2 border rounded">
+                            </div>
+                            <button onclick="calculateGrade()" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
+                                Calculate Grade
+                            </button>
+                            <div id="grade-result" class="mt-4 p-4 bg-white rounded border hidden">
+                                <strong>Grade:</strong> <span id="grade-value"></span><br>
+                                <strong>Message:</strong> <span id="grade-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="markComplete('control')" class="mt-6 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                    Mark as Complete ✓
+                </button>
+            </div>
+        </div>
+
+        <!-- Arrays Section -->
+        <div id="arrays" class="tab-content">
+            <div class="section-card bg-white p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Arrays</h2>
+                <h3 class="text-2xl khmer-font text-gray-700 mb-6">អារេ</h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-teal-600">Array Declaration and Usage</h4>
+                        <div class="code-block">
+                            <pre><code class="language-java">public class Arrays {
+    public static void main(String[] args) {
+        // Array declaration and initialization
+        int[] numbers = {10, 20, 30, 40, 50};
+        String[] fruits = {"Apple", "Banana", "Orange"};
+        String[] khmerFruits = {"ផ្លែប៉ោម", "ចេក", "ក្រូចថ្លុក"};
+        
+        // Accessing array elements
+        System.out.println("First number: " + numbers[0]);
+        System.out.println("Array length: " + numbers.length);
+        
+        // Displaying all elements
+        System.out.println("All numbers:");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.println("Index " + i + ": " + numbers[i]);
+        }
+        
+        // Enhanced for loop (for-each)
+        System.out.println("Fruits:");
+        for (String fruit : fruits) {
+            System.out.println("- " + fruit);
+        }
+        
+        System.out.println("Khmer Fruits:");
+        for (String khmerFruit : khmerFruits) {
+            System.out.println("- " + khmerFruit);
+        }
+        
+        // Two-dimensional array
+        int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+        
+        System.out.println("2D Array:");
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-teal-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold mb-3">Interactive Array Demo</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Enter numbers (comma-separated):</label>
+                                <input type="text" id="array-input" placeholder="10, 20, 30, 40, 50" class="w-full p-2 border rounded">
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="displayArray()" class="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600">
+                                    Display Array
+                                </button>
+                                <button onclick="findMax()" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
+                                    Find Maximum
+                                </button>
+                                <button onclick="calculateSum()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                                    Calculate Sum
+                                </button>
+                            </div>
+                            <div id="array-result" class="mt-4 p-4 bg-white rounded border hidden">
+                                <div id="array-output"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="markComplete('arrays')" class="mt-6 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                    Mark as Complete ✓
+                </button>
+            </div>
+        </div>
+
+        <!-- OOP Section -->
+        <div id="oop" class="tab-content">
+            <div class="section-card bg-white p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Object-Oriented Programming</h2>
+                <h3 class="text-2xl khmer-font text-gray-700 mb-6">ការសរសេរកម្មវិធីតាមវត្ថុ</h3>
+                
+                <div class="space-y-6">
+                    <div class="grid md:grid-cols-4 gap-4">
+                        <div class="bg-red-50 p-4 rounded-lg text-center">
+                            <h5 class="font-semibold text-red-600">Encapsulation</h5>
+                            <p class="text-sm khmer-font">ការហ្វាំង</p>
+                            <p class="text-xs mt-2">Hiding internal details</p>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg text-center">
+                            <h5 class="font-semibold text-blue-600">Inheritance</h5>
+                            <p class="text-sm khmer-font">ការពេញវង្ស</p>
+                            <p class="text-xs mt-2">Deriving from parent class</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg text-center">
+                            <h5 class="font-semibold text-green-600">Polymorphism</h5>
+                            <p class="text-sm khmer-font">ពហុរូបភាព</p>
+                            <p class="text-xs mt-2">Same interface, different implementations</p>
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-lg text-center">
+                            <h5 class="font-semibold text-purple-600">Abstraction</h5>
+                            <p class="text-sm khmer-font">ភាពអរូបី</p>
+                            <p class="text-xs mt-2">Focusing on essential features</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-indigo-600">Student Class Example</h4>
+                        <div class="code-block">
+                            <pre><code class="language-java">// Student class definition
+class Student {
+    // Instance variables (private for encapsulation)
+    private String name;        // ឈ្មោះ
+    private int age;           // អាយុ
+    private String studentId;  // លេខសម្គាល់សិស្ស
+    private double gpa;        // ពិន្ទុមធ្យម
+    
+    // Constructor
+    public Student(String name, int age, String studentId) {
+        this.name = name;
+        this.age = age;
+        this.studentId = studentId;
+        this.gpa = 0.0;
+    }
+    
+    // Getter methods
+    public String getName() { return name; }
+    public int getAge() { return age; }
+    public String getStudentId() { return studentId; }
+    public double getGpa() { return gpa; }
+    
+    // Setter methods
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public void setAge(int age) {
+        if (age > 0) {
+            this.age = age;
+        }
+    }
+    
+    public void setGpa(double gpa) {
+        if (gpa >= 0.0 && gpa <= 4.0) {
+            this.gpa = gpa;
+        }
+    }
+    
+    // Method to display student info
+    public void displayInfo() {
+        System.out.println("Student Information:");
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Student ID: " + studentId);
+        System.out.println("GPA: " + gpa);
+    }
+    
+    // Method to study
+    public void study(String subject) {
+        System.out.println(name + " is studying " + subject);
+    }
+}
+
+// Usage example
+public class OOPExample {
+    public static void main(String[] args) {
+        // Creating objects
+        Student student1 = new Student("Alice", 20, "S001");
+        Student student2 = new Student("សុភា", 19, "S002");
+        
+        // Setting GPA
+        student1.setGpa(3.8);
+        student2.setGpa(3.9);
+        
+        // Display information
+        student1.displayInfo();
+        student2.displayInfo();
+        
+        // Using methods
+        student1.study("Mathematics");
+        student2.study("គណិតវិទ្យា");
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold mb-3">Interactive Student Creator</h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Student Name:</label>
+                                <input type="text" id="student-name" class="w-full p-2 border rounded">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Age:</label>
+                                <input type="number" id="student-age" min="1" max="100" class="w-full p-2 border rounded">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Student ID:</label>
+                                <input type="text" id="student-id" class="w-full p-2 border rounded">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">GPA (0.0-4.0):</label>
+                                <input type="number" id="student-gpa" min="0" max="4" step="0.1" class="w-full p-2 border rounded">
+                            </div>
+                        </div>
+                        <button onclick="createStudent()" class="mt-4 bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600">
+                            Create Student
+                        </button>
+                        <div id="student-list" class="mt-4 space-y-2"></div>
+                    </div>
+                </div>
+                
+                <button onclick="markComplete('oop')" class="mt-6 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                    Mark as Complete ✓
+                </button>
+            </div>
+        </div>
+
+        <!-- Inheritance Section -->
+        <div id="inheritance" class="tab-content">
+            <div class="section-card bg-white p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Inheritance</h2>
+                <h3 class="text-2xl khmer-font text-gray-700 mb-6">ការពេញវង្ស</h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3 text-orange-600">Vehicle Inheritance Example</h4>
+                        <div class="code-block">
+                            <pre><code class="language-java">// Parent class (Base class)
+class Vehicle {
+    protected String brand;    // យីហោ
+    protected String model;    // ម៉ូដែល
+    protected int year;        // ឆ្នាំ
+    
+    public Vehicle(String brand, String model, int year) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+    }
+    
+    public void start() {
+        System.out.println("Vehicle is starting...");
+    }
+    
+    public void stop() {
+        System.out.println("Vehicle is stopping...");
+    }
+    
+    public void displayInfo() {
+        System.out.println("Brand: " + brand);
+        System.out.println("Model: " + model);
+        System.out.println("Year: " + year);
+    }
+}
+
+// Child class (Derived class)
+class Car extends Vehicle {
+    private int numberOfDoors; // ចំនួនទ្វារ
+    private String fuelType;   // ប្រភេទឥន្ធនៈ
+    
+    public Car(String brand, String model, int year, int numberOfDoors, String fuelType) {
+        super(brand, model, year); // Call parent constructor
+        this.numberOfDoors = numberOfDoors;
+        this.fuelType = fuelType;
+    }
+    
+    // Method overriding
+    @Override
+    public void start() {
+        System.out.println("Car engine is starting...");
+    }
+    
+    public void honk() {
+        System.out.println("Beep! Beep!");
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo(); // Call parent method
+        System.out.println("Number of doors: " + numberOfDoors);
+        System.out.println("Fuel type: " + fuelType);
+    }
+}
+
+// Another child class
+class Motorcycle extends Vehicle {
+    private boolean hasSidecar; // មានរទេះបន្ទាប់
+    
+    public Motorcycle(String brand, String model, int year, boolean hasSidecar) {
+        super(brand, model, year);
+        this.hasSidecar = hasSidecar;
+    }
+    
+    @Override
+    public void start() {
+        System.out.println("Motorcycle is starting...");
+    }
+    
+    public void wheelie() {
+        System.out.println("Performing wheelie!");
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Has sidecar: " + hasSidecar);
+    }
+}
+
+// Usage example
+public class InheritanceExample {
+    public static void main(String[] args) {
+        Car car = new Car("Toyota", "Camry", 2023, 4, "Gasoline");
+        Motorcycle motorcycle = new Motorcycle("Honda", "CBR600", 2022, false);
+        
+        System.out.println("=== Car Information ===");
+        car.displayInfo();
+        car.start();
+        car.honk();
+        
+        System.out.println("\n=== Motorcycle Information ===");
+        motorcycle.displayInfo();
+        motorcycle.start();
+        motorcycle.wheelie();
+        
+        // Polymorphism example
+        Vehicle[] vehicles = {car, motorcycle};
+        System.out.println("\n=== Polymorphism Demo ===");
+        for (Vehicle vehicle : vehicles) {
+            vehicle.start(); // Different implementations
+        }
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-orange-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold mb-3">Inheritance Concepts / គោលគំនិតការពេញវង្ស</h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h5 class="font-semibold text-green-600 mb-2">Benefits / អត្ថប្រយោជន៍:</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Code reusability / ការប្រើកូដឡើងវិញ</li>
+                                    <li>• Method overriding / ការបដិសេធមេថុដ</li>
+                                    <li>• Polymorphism / ពហុរូបភាព</li>
+                                    <li>• Hierarchical organization / ការរៀបចំឋានានុក្រម</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-blue-600 mb-2">Keywords / ពាក្យគន្លឹះ:</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li>• <strong>extends</strong> - inherit from class</li>
+                                    <li>• <strong>super</strong> - reference to parent</li>
+                                    <li>• <strong>@Override</strong> - method overriding</li>
+                                    <li>• <strong>protected</strong> - accessible to subclasses</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="markComplete('inheritance')" class="mt-6 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                    Mark as Complete ✓
+                </button>
+            </div>
+        </div>
+
+        <!-- Advanced Topics Section -->
+        <div id="advanced" class="tab-content">
+            <div class="section-card bg-white p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Advanced Topics</h2>
+                <h3 class="text-2xl khmer-font text-gray-700 mb-6">ប្រធានបទកម្រិតខ្ពស់</h3>
+                
+                <div class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-purple-50 p-6 rounded-lg">
+                            <h4 class="text-lg font-semibold text-purple-600 mb-3">Exception Handling</h4>
+                            <p class="text-sm mb-3 khmer-font">ការគ្រប់គ្រងកំហុស</p>
+                            <div class="code-block">
+                                <pre><code class="language-java">try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("Cannot divide by zero!");
+} finally {
+    System.out.println("Cleanup code here");
+}</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-lg">
+                            <h4 class="text-lg font-semibold text-green-600 mb-3">Collections Framework</h4>
+                            <p class="text-sm mb-3 khmer-font">គ្រោងការណ៍ Collections</p>
+                            <div class="code-block">
+                                <pre><code class="language-java">import java.util.*;
+
+List<String> list = new ArrayList<>();
+list.add("Apple");
+list.add("Banana");
+
+Map<String, Integer> map = new HashMap<>();
+map.put("apple", 10);
+map.put("banana", 5);</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold text-blue-600 mb-3">File I/O Operations</h4>
+                        <p class="text-sm mb-3 khmer-font">ការអាន និងសរសេរឯកសារ</p>
+                        <div class="code-block">
+                            <pre><code class="language-java">import java.io.*;
+
+// Writing to file
+try (PrintWriter writer = new PrintWriter("output.txt")) {
+    writer.println("Hello, World!");
+    writer.println("សួស្តី ពិភពលោក!");
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+// Reading from file
+try (BufferedReader reader = new BufferedReader(new FileReader("input.txt"))) {
+    String line;
+    while ((line = reader.readLine()) != null) {
+        System.out.println(line);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-yellow-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold text-yellow-600 mb-3">Interfaces and Abstract Classes</h4>
+                        <p class="text-sm mb-3 khmer-font">ចំណុចប្រទាក់ និងថ្នាក់អរូបី</p>
+                        <div class="code-block">
+                            <pre><code class="language-java">// Interface
+interface Drawable {
+    void draw(); // Abstract method
+    default void display() { // Default method
+        System.out.println("Displaying...");
+    }
+}
+
+// Abstract class
+abstract class Shape {
+    protected String color;
+    
+    public abstract double getArea(); // Abstract method
+    
+    public void setColor(String color) { // Concrete method
+        this.color = color;
+    }
+}
+
+// Implementation
+class Circle extends Shape implements Drawable {
+    private double radius;
+    
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    
+    @Override
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+    
+    @Override
+    public void draw() {
+        System.out.println("Drawing a circle");
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-red-50 p-6 rounded-lg">
+                        <h4 class="text-lg font-semibold text-red-600 mb-3">Lambda Expressions (Java 8+)</h4>
+                        <p class="text-sm mb-3 khmer-font">កន្សោម Lambda</p>
+                        <div class="code-block">
+                            <pre><code class="language-java">import java.util.*;
+import java.util.stream.Collectors;
+
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David");
+
+// Lambda expression for filtering
+List<String> filteredNames = names.stream()
+    .filter(name -> name.startsWith("A"))
+    .collect(Collectors.toList());
+
+// Lambda expression for sorting
+names.sort((a, b) -> a.compareTo(b));
+
+// Method reference
+names.forEach(System.out::println);</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="markComplete('advanced')" class="mt-6 bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                    Mark as Complete ✓
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-2xl font-bold mb-4">Congratulations! / អបអរសាទរ!</h3>
+            <p class="text-lg mb-6">You've completed the Java Programming Tutorial</p>
+            <p class="khmer-font text-lg mb-8">អ្នកបានបញ្ចប់ការសិក្សា Java ហើយ</p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white bg-opacity-20 p-6 rounded-lg">
+                    <h4 class="font-semibold mb-2">Next Steps</h4>
+                    <p class="text-sm">Practice with real projects</p>
+                </div>
+                <div class="bg-white bg-opacity-20 p-6 rounded-lg">
+                    <h4 class="font-semibold mb-2">Keep Learning</h4>
+                    <p class="text-sm">Explore Spring Framework, Android Development</p>
+                </div>
+                <div class="bg-white bg-opacity-20 p-6 rounded-lg">
+                    <h4 class="font-semibold mb-2">Build Portfolio</h4>
+                    <p class="text-sm">Create projects to showcase your skills</p>
+                </div>
+            </div>
+            
+            <div class="text-sm opacity-75">
+                <p>Created with ❤️ for Java learners worldwide</p>
+                <p class="khmer-font">បង្កើតដោយស្នេហា សម្រាប់អ្នកសិក្សា Java ទូទាំងពិភពលោក</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tutorial state management
+        let completedSections = new Set();
+        let currentSection = 'intro';
+        
+        // Show specific section
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            currentSection = sectionId;
+            updateProgress();
+        }
+        
+        // Mark section as complete
+        function markComplete(sectionId) {
+            completedSections.add(sectionId);
+            updateProgress();
+            
+            // Visual feedback
+            event.target.textContent = 'Completed ✓';
+            event.target.classList.remove('bg-green-500', 'hover:bg-green-600');
+            event.target.classList.add('bg-gray-500');
+            event.target.disabled = true;
+            
+            // Confetti effect (simple)
+            showCompletionMessage(sectionId);
+        }
+        
+        // Update progress bar
+        function updateProgress() {
+            const totalSections = 10;
+            const completedCount = completedSections.size;
+            const progressPercentage = (completedCount / totalSections) * 100;
+            
+            document.getElementById('progress-bar').style.width = progressPercentage + '%';
+            document.getElementById('progress-text').textContent = 
+                Math.round(progressPercentage) + '% Complete (' + completedCount + '/' + totalSections + ')';
+        }
+        
+        // Show completion message
+        function showCompletionMessage(sectionId) {
+            const messages = {
+                'intro': 'Great start! You understand Java basics.',
+                'setup': 'Environment ready! Time to code.',
+                'basics': 'Syntax mastered! You can write Java programs.',
+                'variables': 'Data types conquered! Variables are your friends.',
+                'operators': 'Math skills unlocked! Calculations made easy.',
+                'control': 'Logic flow mastered! Decisions and loops.',
+                'arrays': 'Data structures learned! Arrays are powerful.',
+                'oop': 'OOP concepts mastered! Objects everywhere.',
+                'inheritance': 'Code reuse achieved! Inheritance rocks.',
+                'advanced': 'Java expert level! You are ready for real projects.'
+            };
+            
+            const message = messages[sectionId] || 'Section completed!';
+            
+            // Create temporary message
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'fixed top-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-lg z-50 transform transition-all duration-500';
+            messageDiv.textContent = message;
+            
+            document.body.appendChild(messageDiv);
+            
+            // Animate in
+            setTimeout(() => {
+                messageDiv.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                messageDiv.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(messageDiv);
+                }, 500);
+            }, 3000);
+        }
+        
+        // Calculator function
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operator = document.getElementById('operator').value;
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                alert('Please enter valid numbers');
+                return;
+            }
+            
+            let result;
+            let operatorName;
+            
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    operatorName = 'Addition (បូក)';
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    operatorName = 'Subtraction (ដក)';
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    operatorName = 'Multiplication (គុណ)';
+                    break;
+                case '/':
+                    if (num2 === 0) {
+                        alert('Cannot divide by zero!');
+                        return;
+                    }
+                    result = num1 / num2;
+                    operatorName = 'Division (ចែក)';
+                    break;
+                case '%':
+                    result = num1 % num2;
+                    operatorName = 'Modulus (សំណល់)';
+                    break;
+                default:
+                    alert('Invalid operator');
+                    return;
+            }
+            
+            document.getElementById('calc-result').classList.remove('hidden');
+            document.getElementById('result-value').innerHTML = 
+                `<strong>${operatorName}:</strong> ${num1} ${operator} ${num2} = <span class="text-blue-600 font-bold">${result}</span>`;
+        }
+        
+        // Grade calculator function
+        function calculateGrade() {
+            const score = parseInt(document.getElementById('student-score').value);
+            
+            if (isNaN(score) || score < 0 || score > 100) {
+                alert('Please enter a valid score between 0 and 100');
+                return;
+            }
+            
+            let grade, message, gradeColor;
+            
+            if (score >= 90) {
+                grade = 'A';
+                message = 'Excellent! ពិសេសណាស់!';
+                gradeColor = 'text-green-600';
+            } else if (score >= 80) {
+                grade = 'B';
+                message = 'Good job! ធ្វើបានល្អ!';
+                gradeColor = 'text-blue-600';
+            } else if (score >= 70) {
+                grade = 'C';
+                message = 'Average មធ្យម';
+                gradeColor = 'text-yellow-600';
+            } else if (score >= 60) {
+                grade = 'D';
+                message = 'Below average ខាងក្រោមមធ្យម';
+                gradeColor = 'text-orange-600';
+            } else {
+                grade = 'F';
+                message = 'Failed ធ្លាក់';
+                gradeColor = 'text-red-600';
+            }
+            
+            document.getElementById('grade-result').classList.remove('hidden');
+            document.getElementById('grade-value').innerHTML = `<span class="${gradeColor} font-bold">${grade}</span>`;
+            document.getElementById('grade-message').innerHTML = `<span class="${gradeColor}">${message}</span>`;
+        }
+        
+        // Array functions
+        function displayArray() {
+            const input = document.getElementById('array-input').value;
+            if (!input.trim()) {
+                alert('Please enter some numbers');
+                return;
+            }
+            
+            try {
+                const numbers = input.split(',').map(num => parseFloat(num.trim()));
+                
+                if (numbers.some(isNaN)) {
+                    alert('Please enter valid numbers separated by commas');
+                    return;
+                }
+                
+                document.getElementById('array-result').classList.remove('hidden');
+                
+                let output = '<h5 class="font-semibold mb-2">Array Elements:</h5>';
+                output += '<div class="bg-gray-100 p-3 rounded">';
+                numbers.forEach((num, index) => {
+                    output += `<span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 m-1 rounded">Index ${index}: ${num}</span>`;
+                });
+                output += '</div>';
+                output += `<p class="mt-2"><strong>Array Length:</strong> ${numbers.length}</p>`;
+                
+                document.getElementById('array-output').innerHTML = output;
+                
+                // Store numbers for other operations
+                window.currentArray = numbers;
+            } catch (error) {
+                alert('Error processing array: ' + error.message);
+            }
+        }
+        
+        function findMax() {
+            if (!window.currentArray) {
+                alert('Please display the array first');
+                return;
+            }
+            
+            const max = Math.max(...window.currentArray);
+            const maxIndex = window.currentArray.indexOf(max);
+            
+            let output = document.getElementById('array-output').innerHTML;
+            output += `<div class="mt-4 p-3 bg-orange-100 rounded">`;
+            output += `<strong>Maximum Value:</strong> <span class="text-orange-600 font-bold">${max}</span> `;
+            output += `(at index ${maxIndex})`;
+            output += `</div>`;
+            
+            document.getElementById('array-output').innerHTML = output;
+        }
+        
+        function calculateSum() {
+            if (!window.currentArray) {
+                alert('Please display the array first');
+                return;
+            }
+            
+            const sum = window.currentArray.reduce((acc, num) => acc + num, 0);
+            const average = sum / window.currentArray.length;
+            
+            let output = document.getElementById('array-output').innerHTML;
+            output += `<div class="mt-4 p-3 bg-blue-100 rounded">`;
+            output += `<strong>Sum:</strong> <span class="text-blue-600 font-bold">${sum}</span><br>`;
+            output += `<strong>Average:</strong> <span class="text-blue-600 font-bold">${average.toFixed(2)}</span>`;
+            output += `</div>`;
+            
+            document.getElementById('array-output').innerHTML = output;
+        }
+        
+        // Student creator function
+        let studentCount = 0;
+        
+        function createStudent() {
+            const name = document.getElementById('student-name').value.trim();
+            const age = parseInt(document.getElementById('student-age').value);
+            const studentId = document.getElementById('student-id').value.trim();
+            const gpa = parseFloat(document.getElementById('student-gpa').value);
+            
+            if (!name || isNaN(age) || !studentId || isNaN(gpa)) {
+                alert('Please fill in all fields with valid data');
+                return;
+            }
+            
+            if (age < 1 || age > 100) {
+                alert('Please enter a valid age between 1 and 100');
+                return;
+            }
+            
+            if (gpa < 0 || gpa > 4) {
+                alert('Please enter a valid GPA between 0.0 and 4.0');
+                return;
+            }
+            
+            studentCount++;
+            
+            // Create student display
+            const studentDiv = document.createElement('div');
+            studentDiv.className = 'bg-white p-4 rounded-lg border shadow-sm';
+            studentDiv.innerHTML = `
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h6 class="font-semibold text-lg text-indigo-600">Student ${studentCount}</h6>
+                        <p><strong>Name:</strong> ${name}</p>
+                        <p><strong>Age:</strong> ${age}</p>
+                        <p><strong>Student ID:</strong> ${studentId}</p>
+                        <p><strong>GPA:</strong> <span class="font-semibold ${gpa >= 3.5 ? 'text-green-600' : gpa >= 3.0 ? 'text-blue-600' : gpa >= 2.5 ? 'text-yellow-600' : 'text-red-600'}">${gpa}</span></p>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="text-red-500 hover:text-red-700">
+                        ✕
+                    </button>
+                </div>
+                <div class="mt-3 text-sm">
+                    <button onclick="studentStudy('${name}')" class="bg-indigo-500 text-white px-3 py-1 rounded text-xs hover:bg-indigo-600">
+                        Study
+                    </button>
+                    <button onclick="displayStudentInfo('${name}', ${age}, '${studentId}', ${gpa})" class="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600 ml-2">
+                        Display Info
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('student-list').appendChild(studentDiv);
+            
+            // Clear form
+            document.getElementById('student-name').value = '';
+            document.getElementById('student-age').value = '';
+            document.getElementById('student-id').value = '';
+            document.getElementById('student-gpa').value = '';
+            
+            // Show success message
+            showMessage('Student created successfully!', 'success');
+        }
+        
+        function studentStudy(name) {
+            const subjects = ['Mathematics', 'Science', 'History', 'English', 'Art', 'Computer Science'];
+            const randomSubject = subjects[Math.floor(Math.random() * subjects.length)];
+            showMessage(`${name} is studying ${randomSubject}`, 'info');
+        }
+        
+        function displayStudentInfo(name, age, studentId, gpa) {
+            const info = `
+                Student Information:
+                Name: ${name}
+                Age: ${age}
+                Student ID: ${studentId}
+                GPA: ${gpa}
+            `;
+            alert(info);
+        }
+        
+        // Utility function to show messages
+        function showMessage(message, type = 'info') {
+            const colors = {
+                'success': 'bg-green-500',
+                'error': 'bg-red-500',
+                'info': 'bg-blue-500',
+                'warning': 'bg-yellow-500'
+            };
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `fixed bottom-4 right-4 ${colors[type]} text-white p-4 rounded-lg shadow-lg z-50 transform transition-all duration-500 translate-x-full`;
+            messageDiv.textContent = message;
+            
+            document.body.appendChild(messageDiv);
+            
+            // Animate in
+            setTimeout(() => {
+                messageDiv.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                messageDiv.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (document.body.contains(messageDiv)) {
+                        document.body.removeChild(messageDiv);
+                    }
+                }, 500);
+            }, 3000);
+        }
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey || event.metaKey) {
+                switch(event.key) {
+                    case '1':
+                        event.preventDefault();
+                        showSection('intro');
+                        break;
+                    case '2':
+                        event.preventDefault();
+                        showSection('setup');
+                        break;
+                    case '3':
+                        event.preventDefault();
+                        showSection('basics');
+                        break;
+                    case '4':
+                        event.preventDefault();
+                        showSection('variables');
+                        break;
+                    case '5':
+                        event.preventDefault();
+                        showSection('operators');
+                        break;
+                    case '6':
+                        event.preventDefault();
+                        showSection('control');
+                        break;
+                    case '7':
+                        event.preventDefault();
+                        showSection('arrays');
+                        break;
+                    case '8':
+                        event.preventDefault();
+                        showSection('oop');
+                        break;
+                    case '9':
+                        event.preventDefault();
+                        showSection('inheritance');
+                        break;
+                    case '0':
+                        event.preventDefault();
+                        showSection('advanced');
+                        break;
+                }
+            }
+        });
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Prism for syntax highlighting
+            if (typeof Prism !== 'undefined') {
+                Prism.highlightAll();
+            }
+            
+            // Set initial active section
+            showSection('intro');
+            
+            // Add tooltips to navigation buttons
+            const tooltips = {
+                'intro': 'Ctrl+1',
+                'setup': 'Ctrl+2', 
+                'basics': 'Ctrl+3',
+                'variables': 'Ctrl+4',
+                'operators': 'Ctrl+5',
+                'control': 'Ctrl+6',
+                'arrays': 'Ctrl+7',
+                'oop': 'Ctrl+8',
+                'inheritance': 'Ctrl+9',
+                'advanced': 'Ctrl+0'
+            };
+            
+            document.querySelectorAll('.tab-button').forEach((button, index) => {
+                const sectionId = Object.keys(tooltips)[index];
+                if (sectionId) {
+                    button.title = `${button.textContent.trim()} (${tooltips[sectionId]})`;
+                }
+            });
+            
+            // Add smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Show welcome message
+            setTimeout(() => {
+                showMessage('Welcome to Java Programming Tutorial! Use Ctrl+1-9,0 for quick navigation.', 'info');
+            }, 1000);
+        });
+        
+        // Add copy code functionality
+        function addCopyButtons() {
+            document.querySelectorAll('pre code').forEach((codeBlock) => {
+                const button = document.createElement('button');
+                button.className = 'absolute top-2 right-2 bg-gray-700 text-white px-2 py-1 rounded text-xs hover:bg-gray-600';
+                button.textContent = 'Copy';
+                button.onclick = () => {
+                    navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                        button.textContent = 'Copied!';
+                        setTimeout(() => {
+                            button.textContent = 'Copy';
+                        }, 2000);
+                    });
+                };
+                
+                const container = codeBlock.closest('.code-block');
+                if (container) {
+                    container.style.position = 'relative';
+                    container.appendChild(button);
+                }
+            });
+        }
+        
+        // Add copy buttons after page load
+        window.addEventListener('load', addCopyButtons);
+    </script>
+</body>
+</html>
